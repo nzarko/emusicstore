@@ -83,7 +83,9 @@ public class HomeController {
 
         MultipartFile productImage = product.getProductImage();
         String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-        path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\images\\"+product.getProductId()+".png");
+        String ind_path = rootDirectory + File.separator + "WEB-INF" + File.separator +
+                "resources" + File.separator + "images" + File.separator + product.getProductId() + ".png";
+        path = Paths.get(ind_path);
 
         if (productImage != null && !productImage.isEmpty()) {
             try {
@@ -101,7 +103,9 @@ public class HomeController {
     @RequestMapping("/admin/productInventory/deleteProduct/{id}")
     public String deleteProduct(@PathVariable String id, Model model, HttpServletRequest request) {
         String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-        path = Paths.get(rootDirectory + "\\WEB-INF\\resources\\images\\"+id +".png");
+        String ind_path = rootDirectory + File.separator + "WEB-INF" + File.separator +
+                "resources" + File.separator + "images" + File.separator + id + ".png";
+        path = Paths.get(ind_path);
 
         if(Files.exists(path)) {
             try {
