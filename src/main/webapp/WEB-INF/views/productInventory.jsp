@@ -44,6 +44,8 @@
                         <i class="fa fa-info-circle" aria-hidden="true"></i></a>
                         <a href="<spring:url value="/admin/productInventory/deleteProduct/${product.productId}" />">
                         <i class="fa fa-remove" aria-hidden="true"></i></a>
+                        <a href="<spring:url value="/admin/productInventory/editProduct/${product.productId}" />">
+                            <i class="fa fa-pencil" aria-hidden="true"></i></a>
                     </td>
                 </tr>
             </c:forEach>

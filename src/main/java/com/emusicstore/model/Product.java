@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import java.beans.Transient;
 
 @Entity
@@ -14,12 +16,18 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String productId;
+
+    @NotEmpty (message = "The product name must not be empty.")
     private String productName;
     private String productCategory;
     private String productDescription;
+
+    @Min(value = 0, message = "The product price must not be less than zero.")
     private  double productPrice;
     private String productCondition;
     private String productStatus;
+
+    @Min(value = 0, message = "The product unit in stock must not be less than zero.")
     private int unitInStock;
     private String productManufacturer;
 

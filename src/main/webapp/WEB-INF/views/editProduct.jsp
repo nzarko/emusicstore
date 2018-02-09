@@ -10,37 +10,39 @@
         <br><br>
         <br><br>
         <div class="page">
-            <h1>Add Product</h1>
-            <p class="lead">Fill the bellow inforamtion to add a Product!</p>
+            <h1>Edit Product</h1>
+            <p class="lead">Please update the product information here!</p>
         </div>
 
-        <form:form action="${pageContext.request.contextPath}/admin/productInventory/addProduct" method="post"
+        <form:form action="${pageContext.request.contextPath}/admin/productInventory/editProduct" method="post"
                    commandName="product" enctype="multipart/form-data">
+        <form:hidden path="productId" value="${product.productId}" />
+
         <div class="form-group" >
-            <label for="name">Name</label> <form:errors path="productName" cssStyle="color: #ff0000" />
-            <form:input path="productName" id="name" class="form-Control" />
+            <label for="name">Name</label>
+            <form:input path="productName" id="name" class="form-Control" value="${product.productName}" />
         </div>
 
         <div class="form-group row">
             <label for="category">Category</label>
             <div class="col-sm-8 div-inline">
-            <label class="checkbox-inline"><form:radiobutton path="productCategory" id="category"
-                                                             value="instrument" />Instrument</label>
-            <label class="checkbox-inline"><form:radiobutton path="productCategory" id="category"
-                                                             value="record" />Record</label>
-            <label class="checkbox-inline"><form:radiobutton path="productCategory" id="category"
-                                                             value="accessory" />Accessory</label>
+                <label class="checkbox-inline"><form:radiobutton path="productCategory" id="category"
+                                                                 value="instrument" />Instrument</label>
+                <label class="checkbox-inline"><form:radiobutton path="productCategory" id="category"
+                                                                 value="record" />Record</label>
+                <label class="checkbox-inline"><form:radiobutton path="productCategory" id="category"
+                                                                 value="accessory" />Accessory</label>
             </div>
         </div>
 
         <div class="form-group" >
             <label for="description">Description</label>
-            <form:textarea path="productDescription" id="description" class="form-Control" />
+            <form:textarea path="productDescription" id="description" class="form-Control" value="${product.productDescription}" />
         </div>
 
         <div class="form-group" >
-            <label for="price">Price</label> <form:errors path="productPrice" cssStyle="color: #ff0000" />
-            <form:input path="productPrice" id="price" class="form-Control" />
+            <label for="price">Price</label>
+            <form:input path="productPrice" id="price" class="form-Control" value="${product.productPrice}" />
         </div>
 
         <div class="form-group row">
@@ -64,13 +66,13 @@
         </div>
 
         <div class="form-group" >
-            <label for="unitInStock">Unit in Stock</label> <form:errors path="unitInStock" cssStyle="color: #ff0000" />
-            <form:input path="unitInStock" id="unitInStock" class="form-Control" />
+            <label for="unitInStock">Unit in Stock</label>
+            <form:input path="unitInStock" id="unitInStock" class="form-Control" value="${product.unitInStock}"  />
         </div>
 
         <div class="form-group" >
             <label for="manufacturer">Manufacturer</label>
-            <form:input path="productManufacturer" id="manufactorer" class="form-Control" />
+            <form:input path="productManufacturer" id="manufactorer" class="form-Control" value="${product.productManufacturer}" />
         </div>
 
         <div class="form-group">

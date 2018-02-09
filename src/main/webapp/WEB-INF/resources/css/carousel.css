@@ -6,6 +6,7 @@ body {
   padding-top: 3rem;
   padding-bottom: 3rem;
   color: #5a5a5a;
+  background: whitesmoke;
 }
 
 
@@ -14,12 +15,14 @@ body {
 
 /* Carousel base class */
 .carousel {
+    height: 32rem;
   margin-bottom: 4rem;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
-  z-index: 10;
-  bottom: 3rem;
+    z-index: 10;
+    top: 14rem;
+    bottom: auto;
 }
 
 /* Declare heights because of positioning of img element */
