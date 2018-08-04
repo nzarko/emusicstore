@@ -14,7 +14,7 @@
             <p class="lead">Fill the bellow inforamtion to add a Product!</p>
         </div>
 
-        <form:form action="${pageContext.request.contextPath}/admin/productInventory/addProduct" method="post"
+        <form:form action="${pageContext.request.contextPath}/admin/productInventory/addProduct?${_csrf.parameterName}=${_csrf.token}" method="post"
                    commandName="product" enctype="multipart/form-data">
         <div class="form-group" >
             <label for="name">Name</label> <form:errors path="productName" cssStyle="color: #ff0000" />

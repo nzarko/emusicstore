@@ -20,8 +20,9 @@
     </bean>
 
     <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
-
+    <mvc:default-servlet-handler />
     <tx:annotation-driven />
+
 
 
 </beans>
