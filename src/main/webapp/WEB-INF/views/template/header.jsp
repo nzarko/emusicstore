@@ -48,7 +48,7 @@
                 </li>
 
                 <li class="nav-item active" >
-                    <a class="nav-link" href="<c:url value="/productList" />">Products<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="<c:url value="/product/productList" />">Products<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Disabled</a>
@@ -65,9 +65,38 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav pull-right">
-                <li class="nav-item active">
-                    <a class="nav-link" href="<c:url value="/admin"/> ">Admin</a>
-                </li>
+                <c:if test="${pageContext.request.userPrincipal.name != null}">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Welcome: ${pageContext.request.userPrincipal.name}</a>
+                    </li>
+                    <li class="nav-item active">
+                        <c:url var="logoutUrl" value="/j_spring_security_logout" />
+                        <form action="${logoutUrl}" id="logout" method="post" style="display: none">
+                            <input type="hidden" name="${_csrf.parameterName}"
+                                   value="${_csrf.token}" />
+                        </form>
+                        <a class="nav-link" href="#" onclick="document.getElementById('logout').submit();">Logout</a>
+                    </li>
+                    <c:if test="${pageContext.request.userPrincipal.name != 'admin'}">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="<c:url value="/customer/cart"/> ">Cart</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${pageContext.request.userPrincipal.name == 'admin'}">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="<c:url value="/admin"/> ">Admin</a>
+                        </li>
+                    </c:if>
+                </c:if>
+
+                <c:if test="${pageContext.request.userPrincipal.name == null}">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="<c:url value="/login"/> ">Login</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="<c:url value="/register"/> ">Register</a>
+                    </li>
+                </c:if>
             </ul>
             <form class="form-inline mt-2 mt-md-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">

@@ -1,21 +1,23 @@
 package com.emusicstore.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import java.beans.Transient;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
-public class Product {
+public class Product implements Serializable {
 
+
+    private static final long serialVersionUID = -3532377236419382983L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String productId;
+    private int productId;
 
     @NotEmpty (message = "The product name must not be empty.")
     private String productName;
@@ -34,6 +36,10 @@ public class Product {
     @javax.persistence.Transient
     private MultipartFile productImage;
 
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    List<CartItem> cartItemList;
+
 
     public MultipartFile getProductImage() {
         return productImage;
@@ -43,11 +49,11 @@ public class Product {
         this.productImage = productImage;
     }
 
-    public String getProductId() {
+    public int getProductId() {
         return productId;
     }
 
-    public void setProductId(String productId) {
+    public void setProductId(int productId) {
         this.productId = productId;
     }
 
@@ -114,5 +120,13 @@ public class Product {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public List<CartItem> getCartItemList() {
+        return cartItemList;
+    }
+
+    public void setCartItemList(List<CartItem> cartItemList) {
+        this.cartItemList = cartItemList;
     }
 }

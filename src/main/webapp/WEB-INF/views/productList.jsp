@@ -39,7 +39,7 @@
                 <td>${product.productCategory}</td>
                 <td>${product.productCondition}</td>
                 <td>${product.productPrice} &euro;</td>
-                <td><a href="<spring:url value="/productList/viewProduct/${product.productId}" />" >
+                <td><a href="<spring:url value="/product/viewProduct/${product.productId}" />" >
                     <i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
             </tr>
             </c:forEach>

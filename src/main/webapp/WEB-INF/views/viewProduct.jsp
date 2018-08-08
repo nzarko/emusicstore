@@ -38,7 +38,7 @@
                     <br>
 
                     <c:set var="role" scope="page" value="${param.role}" />
-                    <c:set var="url" scope="page" value="/productList" />
+                    <c:set var="url" scope="page" value="/product/productList" />
                     
                     <c:if test="${role='admin'}">
                         <c:set var="url" scope="page" value="/admin/productInventory" />
@@ -48,7 +48,7 @@
                         <a href="<c:url value="${url}"/> " class="btn btn-primary">Back</a>
                         <a href="#" class="btn btn-warning btn-lg"
                            ng-click="addToCart('${product.productId}')"><i class="fa fa-shopping-cart"></i>Order Now</a>
-                        <a href="<spring:url value="/cart"/> " class="btn btn-primary">
+                        <a href="<spring:url value="/customer/cart/"/> " class="btn btn-primary">
                             <i class="fa fa-hand-o-right"></i>View Cart</a>
                     </p>
                 </div>
